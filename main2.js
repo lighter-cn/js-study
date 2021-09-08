@@ -158,3 +158,93 @@ const output = (value) => {
   console.log(value);
 };
 arr3.forEach(output);
+
+/*------------------------------
+  条件式
+------------------------------*/
+
+if (true) {
+  console.log("実行");
+}
+
+// 実行する文が一行の時はブロックを省略できる
+if (true) console.log("{}省略");
+
+// 条件式の暗黙的な型変換
+if (1) {
+  console.log("表示1");
+}
+if (0) {
+  console.log("非表示1");
+}
+if ("str") {
+  console.log("表示2");
+}
+if (undefined) {
+  console.log("非表示2");
+}
+
+// else if文
+const ver = 2;
+if (ver === 1) {
+  console.log("ver1");
+} else if (ver === 2) {
+  console.log("ver2");
+} else if (ver === 3) {
+  console.log("ver3");
+}
+
+// else 文
+const num1 = 2;
+if (num1 > 5) {
+  console.log("more than 5");
+} else {
+  console.log("less than 5");
+}
+
+// ネストしたif文
+const year = 2021;
+if (year % 4 === 0) {
+  if (year % 100 === 0) {
+    if (year % 400 === 0) {
+      console.log("閏年");
+    } else {
+      console.log("閏年じゃない");
+    }
+  } else {
+    console.log("閏年");
+  }
+} else {
+  console.log("閏年じゃない");
+}
+
+// switch文
+const version = 3;
+switch (version) {
+  case 1:
+    console.log("v1");
+    break;
+  case 2:
+    console.log("v2");
+    break;
+  case 3:
+    console.log("v3");
+    break;
+  default:
+    console.log("other");
+    break;
+}
+
+// switch文 breakを使わなかった場合
+const version2 = 1;
+switch (version2) {
+  case 1:
+    console.log("v1");
+  case 2:
+    console.log("v2");
+  case 3:
+    console.log("v3");
+  default:
+    console.log("other");
+    break;
+}
