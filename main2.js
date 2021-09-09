@@ -248,3 +248,82 @@ switch (version2) {
     console.log("other");
     break;
 }
+
+/*------------------------------
+  ループと反復処理
+------------------------------*/
+// while文
+let x = 0;
+while (x < 5) {
+  console.log(x);
+  x++;
+}
+
+// do-while文
+let y = 10;
+do {
+  console.log(y);
+  y++;
+} while (y < 5);
+
+// for文
+let total = 10;
+for (let i = 0; i < 3; i++) {
+  total += i + 1;
+}
+console.log(total);
+
+// forEach
+function sum(arr) {
+  let total = 0;
+  arr.forEach((i) => (total += i));
+  return total;
+}
+console.log(sum([1, 2, 3, 4, 5]));
+
+// break文
+const numbers = [1, 5, 11, 15, 21];
+let isEvenInclude = false;
+for (let i = 0; i < numbers.length; i++) {
+  const num = numbers[i];
+  if (num % 2 === 0) {
+    isEvenInclude = true;
+    break;
+  }
+}
+console.log(isEvenInclude);
+
+// continue 文
+function isEven(num) {
+  return num % 2 === 0;
+}
+function filterEven(arr) {
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    const num = arr[i];
+    if (!isEven(num)) {
+      continue;
+    }
+    result.push(num);
+  }
+  return result;
+}
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(filterEven(array));
+
+// for...in
+const obj1 = {
+  a: 1,
+  b: 2,
+  c: 3
+};
+
+for (const obj in obj1) {
+  console.log(obj + "/" + obj1[obj]);
+}
+
+// for...of
+const arr4 = [1, 2, 3, 4, 5];
+for (const value of arr4) {
+  console.log(value);
+}
