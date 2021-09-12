@@ -177,3 +177,34 @@ const cloneObj = shallowClone(obj__);
 // `nest`プロパティのオブジェクトは同じオブジェクトのままになる 
 obj__.nest.level = 5;
 console.log(cloneObj.nest); // => true
+
+/*------------------------------
+  プロトタイプオブジェクト
+------------------------------*/
+
+console.log(typeof Object.prototype.toString);
+
+const obj_0 = {
+  "key": "value"
+};
+
+console.log(obj_0.toString === Object.prototype.toString);
+console.log(obj_0.toString());
+
+// プロトタイプメソッドとインスタンスメソッドの優先順位
+const customObject = {
+  toString () {
+    return "custom value";
+  }
+}
+console.log(customObject.toString());
+
+// in演算子とhasOwnPropertyの比較
+const obj__1 = {};
+
+console.log(obj__1.hasOwnProperty("toString"));
+console.log("toString" in obj__1)
+
+// オブジェクトの継承元を明示して作成
+const oo = Object.create(Object.prototype);
+console.log(oo.hasOwnProperty === Object.prototype.hasOwnProperty);
