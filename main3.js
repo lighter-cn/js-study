@@ -208,3 +208,166 @@ console.log("toString" in obj__1)
 // オブジェクトの継承元を明示して作成
 const oo = Object.create(Object.prototype);
 console.log(oo.hasOwnProperty === Object.prototype.hasOwnProperty);
+
+/*------------------------------
+  配列
+------------------------------*/
+
+// 配列の作成
+const emptyArray = [];
+const numbers = [1, 2, 3];
+const matrix = [
+  ["a" , "b"],
+  ["c" , "d"]
+];
+
+// 配列の参照
+console.log(numbers[0]);
+console.log(matrix[1][0]);
+
+// 配列の長さを取得
+console.log(numbers.length);
+// 配列の最後の要素にアクセスするには要素数-1のindexを参照する
+console.log(numbers[numbers.length - 1]);
+
+// 存在しないindexにアクセスする場合
+console.log(numbers[3]); 
+
+// 疎な配列
+const arrayEmpty2 = ["a", , "c"];
+console.log(arrayEmpty2[1]); // これもundefinedを返す
+
+// 配列かどうかの判定
+console.log(Array.isArray(numbers));
+console.log(typeof numbers); // objectを返すので使えない
+
+// 分割代入
+const arr = ["A", "B", "C"];
+const [a, b, c] = arr;
+console.log(a);
+console.log(b);
+console.log(c);
+
+// hasOwnPropertyでundefinedを見分ける
+
+const denseArray = [1, undefined, 3];
+// 要素そのものがない疎な配列
+const sparseArray = [1, , 3];
+console.log(denseArray[1]); // => undefined
+console.log(sparseArray[1]); // => undefined
+
+const denseArray2 = [1, undefined, 3];
+const sparseArray2 = [1, , 3];
+// 要素自体は`undefined`値が存在する
+console.log(denseArray2.hasOwnProperty(1)); // => true
+// 要素自体がない
+console.log(sparseArray2.hasOwnProperty(1)); // => false
+
+// 要素を検索
+const arr1 = ["java", "javascript", "php"];
+const indexOfJS = arr1.indexOf("javascript");
+console.log(indexOfJS);
+console.log(arr1.indexOf("hoge")); // 一致する要素がない場合-1が返る
+
+// indexOfのngケース
+const o_1 = {key: "value"};
+const arr2 = ["a", "b", obj];
+console.log(arr2.indexOf({key: "value"})); // 参照が異なるオブジェクトは-1になる
+
+// findIndex
+const colors = [
+  { color: "red"},
+  { color: "green"},
+  { color: "blue"},
+];
+const indexOfBlue = colors.findIndex(obj => {
+  return obj.color === "blue";
+})
+console.log(indexOfBlue); // -> 2
+
+// Array#find
+const blueColor = colors.find(obj => obj.color === "blue");
+console.log(blueColor);
+const whiteColor = colors.find(obj => obj.color === "white");
+console.log(whiteColor); // 該当しないのでundefinedを返す
+
+// Array#slice
+const arr3 = ["A","B","C","D","E","F"];
+console.log(arr3.slice(1,3));
+console.log(arr3.slice(1));
+console.log(arr3.slice(-1));
+console.log(arr3.slice(1,1));
+console.log(arr3.slice(4,1));
+
+// Array#includes
+const arr4 = ["Java", "JavaScript", "Ruby"];
+console.log(arr4.includes("JavaScript"));
+console.log(arr4.includes("PHP"));
+
+// Array#some
+console.log(colors.some(obj => obj.color === "true"));
+
+// 追加と削除
+
+const arr5 = ["a", "b", "c"];
+arr5.push("d");
+console.log(arr5);
+
+arr5.pop();
+console.log(arr5);
+
+arr5.unshift("Z");
+console.log(arr5);
+
+arr5.shift();
+console.log(arr5);
+
+// Array#concat
+const arr6 = arr5.concat(["d", "e"]);
+console.log(arr6);
+
+const arr7 = arr6.concat("任意の要素");
+console.log(arr7);
+
+// spread構文
+const arr8 = ["A", "B", "C"];
+const arr9 = ["a", ...arr8, "b"];
+console.log(arr9);
+
+// Array#flat
+const arr10 = ["A",["B",["C"]]];
+console.log(arr10.flat());
+console.log(arr10.flat(2));
+
+// Array#splice
+const ar1 = ["a", "b", "c"];
+ar1.splice(1,1);
+console.log(ar1);
+ar1.splice(1,1,"b","c");
+console.log(ar1);
+
+// lengthプロパティを使って配列を空にする
+
+ar1.length = 0;
+console.log(ar1);
+
+// 空の配列を代入
+let ar2 = [1,2,3]; // constだと再代入できない
+console.log(ar2.length);
+ar2 = [];
+console.log(ar2.length); // もともと参照していた[1,2,3]はどこからも参照されなくなりガーベッジコレクションによりメモリから開放される
+
+// Array#forEach
+const ar3 = [1,2,3];
+ar3.forEach((value, index, array)=>{
+  console.log(value, index, array);
+})
+
+// Array#map
+console.log(ar3.map(x => x * 10));
+
+// Array#filter
+console.log(ar3.filter(x => x % 2 !== 0));
+
+// Array#reduce
+console.log(ar3.reduce((accumulator, value, index, array) => { return accumulator + value;}, 0));
