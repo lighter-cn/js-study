@@ -81,3 +81,37 @@ console.log(str6.endsWith('にわ'));
 console.log(str6.endsWith('いる'));
 console.log(str6.includes('にわ'));
 console.log(str6.includes('いる'));
+
+// 正規表現
+// String#search
+const str7 = "abc123efg";
+const searchPattern = /\d{3}/;
+console.log(str7.search(searchPattern));
+
+// String#match
+const str8 = "ABC あいう DE えお";
+const alphabetsPattern = /[a-zA-Z]+/;
+const results = str8.match(alphabetsPattern);
+console.log(results.length);
+console.log(results[0]);
+console.log(results.index);
+console.log(results.input);
+
+const alphabetsPattern2 = /[a-zA-Z]+/g;
+const results2 = str8.match(alphabetsPattern2);
+console.log(results2.length);
+console.log(results2[0]);
+console.log(results2[1]);
+console.log(results2.index);
+console.log(results2.input);
+
+// String#matchとキャプチャリングの例
+const pattern = /ECMAScript (\d+)/;
+const [all, capture1] = "ECMAScript 6".match(pattern);
+console.log(all);
+console.log(capture1);
+
+// 文字列の置換・削除
+const str9 = 'mojiretsu';
+const st1 = str9.replace("moji", '');
+console.log(st1);
