@@ -1052,3 +1052,26 @@ String#replaceAll
 関数が受け取る引数にはタグつきテンプレート向けの値が渡ってくる
 このとき、関数の第一引数にはテンプレートの中身が${}で区切られた文字列の配列、第二引数以降は${}の中に書いた式の評価結果が順番に渡される
 
+## 文字列とUnicode
+
+### Code Point
+
+Code Point : 文字に対する一意のID
+
+String#codePointAt
+String#fromCodePoint
+
+### Code Unit
+
+### サロゲートペア
+
+ふたつのCode Unitの組み合わせで一つの文字(ひとつのCode Point)を表現する仕組み
+
+サロゲートペアでは、2つのCode Unitの組み合わせ（合計4バイト）で1つの文字（1つのCode Point）を表現する
+UTF-16では、次の範囲をサロゲートペアに利用する領域としている
+
+- \uD800～\uDBFF：上位サロゲートの範囲
+- \uDC00～\uDFFF：下位サロゲートの範囲
+
+文字列中に上位サロゲートと下位サロゲートのCode Unitが並んだ場合に、2つのCode Unitを組み合わせて1文字（Code Point）として扱う
+

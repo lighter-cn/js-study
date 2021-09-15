@@ -115,3 +115,18 @@ console.log(capture1);
 const str9 = 'mojiretsu';
 const st1 = str9.replace("moji", '');
 console.log(st1);
+
+/* 文字列とunicode */
+
+console.log("あ".codePointAt(0));
+console.log(String.fromCodePoint(12354));
+console.log(String.fromCodePoint(0x3042));
+
+console.log("あ".codePointAt(0).toString(16));
+
+console.log("\u{3042}");
+
+// 上位サロゲート + 下位サロゲートの組み合わせ
+console.log("\uD867\uDE3D");
+// Code Pointでの表現
+console.log("\u{29e3d}");
